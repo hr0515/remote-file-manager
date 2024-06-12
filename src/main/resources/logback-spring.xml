@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="false" scanPeriod="2 seconds">
+    <!--包含了defaults.xml和console-appender.xml-->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <!-- 保证Springboot的默认输出不变 -->
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <contextName>BankLogging</contextName>
+
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%15thread] %msg%n"/>
+
+    <property name="buffered.off" value="true"/>
+
+    <springProperty name="savePath" source="root.path" defaultValue="/"/>
+
+
+
+    <appender name="cmd_console_appender" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <!-- Minimum logging level to be presented in the console logs-->
+            <level>DEBUG</level>
+        </filter>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="cmd_file_appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${savePath}/cmd.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${savePath}.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>  <!-- 日志文件过大会使的编辑器打开非常慢，因此设置日志最大100MB -->
+            <maxHistory>30</maxHistory>  <!-- 保存30天 -->
+            <totalSizeCap>2GB</totalSizeCap>  <!-- 总日志大小 -->
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+            <immediateFlush>${buffered.off}</immediateFlush>
+        </encoder>
+    </appender>
+
+    <logger name="cmd_log" additivity="false">
+        <level value="debug"/>
+<!--        <appender-ref ref="cmd_console_appender"/>-->
+        <appender-ref ref="cmd_file_appender"/>
+    </logger>
+
+
+</configuration>

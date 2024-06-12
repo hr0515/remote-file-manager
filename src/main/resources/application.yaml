@@ -1,0 +1,43 @@
+
+# 自己设定的 Linux 和 Windows的 目录
+root:
+  path: /home/remote
+#  path: D:/lhr
+
+
+spring:
+  servlet:
+    multipart:
+      max-request-size: 1GB
+      max-file-size: 1GB
+
+
+repository:
+  path:  ${root.path}/repository
+
+database:
+  path: ${root.path}/info.db
+
+upload:
+  path: ${root.path}/download
+
+server:
+  port: 9999
+  tomcat:
+    uri-encoding: UTF-8
+
+# Logging
+logging:
+  file:
+    name: ${root.path}/app.log
+
+# SFE4J configuration
+sfe4j:
+  # Entry point
+  base-dir-path: ${root.path}
+  restrict-to-base-dir: ${RESTRICT_TO_BASE_DIR:false}
+  title: ${TITLE:远程文件访问}
+  description: ${DESCRIPTION:""}
+  quick-links:
+    root: /
+    logs: /data/logs
