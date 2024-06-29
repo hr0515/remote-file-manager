@@ -45,8 +45,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         manager.createUser(User.withUsername("qgy").password("3184242").authorities("p3").build());
 
         UserCaching.setUser("lhr", new com.lhr.manager.entity.User("李", "lhr", "3184020", 0, false, false));
-        UserCaching.setUser("zyh", new com.lhr.manager.entity.User("李", "zyh", "20000820", 0, false, false));
-        UserCaching.setUser("qgy", new com.lhr.manager.entity.User("李", "qgy", "3184242", 0, false, false));
+        UserCaching.setUser("zyh", new com.lhr.manager.entity.User("赵", "zyh", "20000820", 0, false, false));
+        UserCaching.setUser("qgy", new com.lhr.manager.entity.User("齐", "qgy", "3184242", 0, false, false));
 
         return manager;
     }

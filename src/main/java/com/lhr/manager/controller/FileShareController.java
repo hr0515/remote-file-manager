@@ -50,7 +50,7 @@ public class FileShareController {
         File file = new File(filePath);
         if (file.exists()) {
             int i = sqLiteHelper.insertShare(file.getName(), file.length(), user.getUsername(), file.getAbsolutePath(), "");
-            log.info("[{}]分享文件[{}], id=[{}]", user.getUsername(), file.getAbsolutePath(), id);
+            log.info("[{}]分享文件[{}], id=[{}]", user.getUsername(), file.getAbsolutePath(), i);
             if (i != 0) {
                 id = String.valueOf(i);
             }

@@ -70,7 +70,6 @@ public class UploadController {
             mkdirs(file);
         }
 
-
         // 根据listB对listA进行排序
         nameTimeList.sort(Comparator.comparing(arr -> arr[0], Collections.reverseOrder()));
 

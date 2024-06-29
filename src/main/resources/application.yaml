@@ -1,8 +1,8 @@
 
 # 自己设定的 Linux 和 Windows的 目录
 root:
-  path: /home/remote
-#  path: D:/lhr
+#  path: /home/remote
+  path: D:/home/remote
 
 
 spring:

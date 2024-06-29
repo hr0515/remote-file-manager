@@ -125,11 +125,14 @@
                                 <a onclick="fileClickBtn(this)" href="JavaScript:(0)" value="${ctx}/file-viewer?file=${file.fullName}"
                                    data-toggle="tooltip" data-placement="right"
                                    title="浏览 '${file.name}' 文件">${file.name}</a>
-
                             <#elseif file.readable && (file.name?ends_with(".mp4") || file.name?ends_with(".avi") || file.name?ends_with(".flv") || file.name?ends_with(".rmvb") || file.name?ends_with(".mov"))>
                                 <a onclick="fileClickBtn(this)" href="JavaScript:(0)" value="${ctx}/file-play?file=${file.fullName}"
                                    data-toggle="tooltip" data-placement="right"
                                    title="浏览 '${file.name}' 视频">${file.name}</a>
+                            <#elseif file.readable && (file.name?ends_with(".pdf"))>
+                                <a onclick="fileClickBtn(this)" href="JavaScript:(0)" value="${ctx}/pdfjs/web/viewer.html?file=/pdf-viewer/get?file=${file.fullName}"
+                                   data-toggle="tooltip" data-placement="right"
+                                   title="浏览 '${file.name}' PDF">${file.name}</a>
                             <#elseif file.readable && (file.name?ends_with(".jpg") || file.name?ends_with(".png") || file.name?ends_with(".jpeg") || file.name?ends_with(".gif") || file.name?ends_with(".bmp"))>
                                 <a onclick="picClickBtn(this)" href="JavaScript:(0)" value="${ctx}/image?path=${file.fullName}"
                                    data-toggle="tooltip" data-placement="right">${file.name}</a>
@@ -228,6 +231,7 @@
 
     function fileClickBtn(ths) {
         // window.location.href = ths.getAttribute('value');
+        console.log(ths.getAttribute('value'))
         window.open(ths.getAttribute('value'), '_blank'); // 在新窗口中打开当前页面的 URL
     }
     function picClickBtn(ths) {
