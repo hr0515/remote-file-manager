@@ -40,9 +40,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public UserDetailsService userDetailsService() {
         //这里配置用户信息,这里暂时使用这种方式将用户存储在内存中
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(User.withUsername("lhr").password("3184020").authorities("p1").build());
-        manager.createUser(User.withUsername("zyh").password("20000820").authorities("p2").build());
-        manager.createUser(User.withUsername("qgy").password("3184242").authorities("p3").build());
+        manager.createUser(User.withUsername("lhr").password("").authorities("p1").build());
+        manager.createUser(User.withUsername("zyh").password("").authorities("p2").build());
+        manager.createUser(User.withUsername("qgy").password("").authorities("p3").build());
 
         UserCaching.setUser("lhr", new com.lhr.manager.entity.User("李", "lhr", "3184020", 0, false, false));
         UserCaching.setUser("zyh", new com.lhr.manager.entity.User("赵", "zyh", "20000820", 0, false, false));
